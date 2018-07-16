@@ -16,8 +16,10 @@
 <body>
     <div class = "container">
         <h1>{{ classname }}</h1>
-        
+        {% for class in classlist %}
+            <p> {{class}}</p>
+        {%endfor%}
     </div>
-    
+
 </body>
 </html>
