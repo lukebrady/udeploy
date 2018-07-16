@@ -49,7 +49,7 @@ def choose():
 
 @app.route('/deploy', methods = ['GET','POST'])
 def deploy():
-    class_name = request.form['class']
+    class_name = request.form['classname']
     list_file = request.files['classlist']
 
     print(list_file)

@@ -16,11 +16,16 @@
         <h3>UDeploy</h3>
         <div class = "container">
             <form method="POST" action="http://127.0.0.1:8080/deploy" enctype="multipart/form-data">
-                <header>Class Name</header>
-                <input type = "text" name = "class">
-                <header>Class List (.csv format)</header>
-                <input type = "file" name = "classlist" accept=".csv">
-                <input type = "submit">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Class Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name = "classname" placeholder="Enter class name">
+                    <small id="emailHelp" class="form-text text-muted">Enter the class that you will be deploying for.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Class List (.CSV format)</label>
+                    <input type="file" accept = ".csv" class="form-control-file" id="exampleInputPassword1" name = "classlist">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </body>
