@@ -13,6 +13,15 @@
     <title>UDeploy - {{ school }}</title>
 </head>
     <body>
-        <h1>Hello from UDeploy!</h1>
+        <h3>UDeploy</h3>
+        <div class = "container">
+            <form method="POST" action="http://127.0.0.1:8080/deploy" enctype="multipart/form-data">
+                <header>Class Name</header>
+                <input type = "text" name = "class">
+                <header>Class List (.csv format)</header>
+                <input type = "file" name = "classlist" accept=".csv">
+                <input type = "submit">
+            </form>
+        </div>
     </body>
 </html>

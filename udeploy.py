@@ -1,9 +1,12 @@
+from classlist import parse_classlist
 # Import Flask and template engine.
 from flask import Flask, render_template, redirect, request
 
 
 app = Flask(__name__)
 
+# Temporary web object used to keep track of authentication status
+# and school choice. This will determine how redirections work.
 web_object = {'authenticated' : False, 'school': None}
 
 @app.route('/')
@@ -42,7 +45,18 @@ def choose():
     # Add the school to the web object.
     web_object['school'] = school
     # Now return the login page for that University.
-    return redirect('/login')    
+    return redirect('/login')
+
+@app.route('/deploy', methods = ['GET','POST'])
+def deploy():
+    class_name = request.form['class']
+    list_file = request.files['classlist']
+
+    print(list_file)
+    # Parse the class list.
+    classlist = parse_classlist('./{}'.format(list_file.filename))
+
+    return render_template('deploy.html',classname = class_name, classlist = classlist)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
