@@ -10,6 +10,8 @@ app = Flask(__name__)
 # and school choice. This will determine how redirections work.
 web_object = {'authenticated' : False, 'school': None}
 
+# @app.route('/') will render the UDeploy index after a user has been authenticated.
+# You can start the deployment process from the index.
 @app.route('/')
 def index():
     if web_object['school'] is None:
@@ -19,6 +21,10 @@ def index():
     else:
         return render_template('index.html', school = web_object['school'])
 
+# @app.route('/login') is the route that handles user logins to the system.
+# This is the page that a user will be redirected to when they first access
+# the system. Cookie support will come in the future, but for now a user has 
+# to login every unique visit to UDeploy.
 @app.route('/login')
 def login():
     return render_template('login.html', school = web_object['school'])   
