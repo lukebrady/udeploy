@@ -1,4 +1,5 @@
 from classlist import parse_classlist
+from deployment import azure
 # Import Flask and template engine.
 from flask import Flask, render_template, redirect, request
 
@@ -55,7 +56,7 @@ def deploy():
     print(list_file)
     # Parse the class list.
     classlist = parse_classlist('./{}'.format(list_file.filename))
-
+    azure.deploy_classlist(class_name, classlist)
     return render_template('deploy.html',classname = class_name, classlist = classlist)
 
 if __name__ == '__main__':
